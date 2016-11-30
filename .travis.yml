@@ -1,0 +1,24 @@
+sudo: required
+language: bash
+services:
+  - docker
+
+env:
+  global:
+    - BASE=biggis/base:alpine-3.4
+    - BASE_JRE=biggis/base:java8-jre-alpine
+
+install:
+  #login to dockerhub
+  - docker login --email=$DOCKER_HUB_EMAIL --username=$DOCKER_HUB_USERNAME --password=$DOCKER_HUB_PASSWORD
+
+script:
+  #build the images
+  - docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` --build-arg VCS_REF=`git rev-parse --short HEAD` -t $BASE alpine
+  - docker build --build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` --build-arg VCS_REF=`git rev-parse --short HEAD` -t $BASE_JRE java8-jre
+
+after_success:
+  - echo "build successful"
+  #push the image to dockerhub
+  - docker push $BASE
+  - docker push $BASE_JRE
