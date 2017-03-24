@@ -35,6 +35,6 @@ ADD docker-entrypoint.sh $FLINK_HOME/bin/
 
 WORKDIR /opt/flink
 
-EXPOSE 6123
+EXPOSE 8081 6123
 
 CMD ["docker-entrypoint.sh", "sh", "-c"]

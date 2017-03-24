@@ -1,6 +1,5 @@
 # BigGIS Flink
-[![Build Status](https://travis-ci.org/biggis-project/biggis-flink.svg?branch=master)][Travis]
-[Travis]: https://travis-ci.org/biggis-project/biggis-flink
+[![Build Status](https://api.travis-ci.org/biggis-project/biggis-flink.svg)](https://travis-ci.org/biggis-project/biggis-flink)
 Docker container for Apache Flink
 
 ## Prerequisites
