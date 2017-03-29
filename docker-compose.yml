@@ -6,6 +6,7 @@ services:
     hostname: jobmanager
     ports:
       - "8081:8081"
+      - "6123:6123"
     command: docker-entrypoint.sh jobmanager
     environment:
       JOB_MANAGER_RPC_ADDRESS: jobmanager
