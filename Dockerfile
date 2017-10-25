@@ -29,12 +29,12 @@ RUN set -x && \
     rm -rf /var/cache/apk/*
 
 ENV FLINK_HOME /opt/flink
-ENV PATH $PATH:$FLINK_HOME/bin
+ENV PATH $FLINK_HOME/bin:/sbin:$PATH
 
-ADD docker-entrypoint.sh $FLINK_HOME/bin/
+COPY ./files /
 
 WORKDIR /opt/flink
 
 EXPOSE 8081 6123
 
-CMD ["docker-entrypoint.sh", "sh", "-c"]
+CMD ["start.sh"]

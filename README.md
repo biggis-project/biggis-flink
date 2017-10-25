@@ -6,9 +6,16 @@ Docker container for Apache Flink
 Docker Compose >= 1.9.0
 
 ## Deployment
+
+**On local setup**:
 ```sh
 docker-compose up -d
 ```
+
+**On Rancher**:
+* Add host label `flink_jobmanager=true` to any of your hosts.
+* Create new Flink stack via Rancher WebUI and deploy `docker-compose.rancher.yml`.
+
 
 ## Ports
 - Flink WebUI is running on port `8081`
