@@ -14,7 +14,7 @@ docker-compose up -d
 
 **On Rancher**:
 * Add host label `flink_jobmanager=true` to any of your hosts.
-* Create new Flink stack via Rancher WebUI and deploy `docker-compose.rancher.yml`.
+* Create new Flink stack `flink` via Rancher WebUI and deploy `docker-compose.rancher.yml`.
 
 
 ## Ports
