@@ -10,7 +10,7 @@ services:
     command: start.sh jobmanager
     labels:
       io.rancher.container.pull_image: always
-      io.rancher.scheduler.affinity:host_label: flink_jobmanager=true
+      io.rancher.scheduler.affinity:host_label: flink-jobmanager=true
     environment:
       JOB_MANAGER_RPC_ADDRESS: flink-jobmanager.flink
       USER_ID: 1000
