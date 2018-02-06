@@ -12,7 +12,7 @@ elif [ "$1" == "jobmanager" ]; then
   echo "blob.server.port: 6124" >> "$FLINK_HOME/conf/flink-conf.yaml"
 
   echo "config file: " && grep '^[^\n#]' $FLINK_HOME/conf/flink-conf.yaml
-  exec $FLINK_HOME/bin/jobmanager.sh start cluster
+  exec $FLINK_HOME/bin/jobmanager.sh start-foreground cluster
 
 elif [ "$1" == "taskmanager" ]; then
   echo "Starting Task Manager"
@@ -21,7 +21,7 @@ elif [ "$1" == "taskmanager" ]; then
   echo "blob.server.port: 6124" >> "$FLINK_HOME/conf/flink-conf.yaml"
 
   echo "config file: " && grep '^[^\n#]' $FLINK_HOME/conf/flink-conf.yaml
-  exec $FLINK_HOME/bin/taskmanager.sh start
+  exec $FLINK_HOME/bin/taskmanager.sh start-foreground
 fi
 
 exec "$@"
