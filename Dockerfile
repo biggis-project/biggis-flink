@@ -3,7 +3,7 @@ FROM biggis/base:java8-jre-alpine
 MAINTAINER wipatrick
 
 # Install Flink
-ARG FLINK_VERSION=1.3.0
+ARG FLINK_VERSION=1.4.0
 ARG HADOOP_VERSION=27
 ARG SCALA_VERSION=2.11
 
