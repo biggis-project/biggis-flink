@@ -15,6 +15,11 @@ services:
       JOB_MANAGER_RPC_ADDRESS: flink-jobmanager.flink
       USER_ID: 1000
       USER_NAME: flink
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
 
   flink-taskmanager:
     image: biggis/flink:1.4.0
@@ -29,3 +34,8 @@ services:
       JOB_MANAGER_RPC_ADDRESS: flink-jobmanager.flink
       USER_ID: 1000
       USER_NAME: flink
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "1"
