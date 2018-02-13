@@ -6,6 +6,8 @@ services:
 env:
   global:
     - IMG=biggis/flink:1.4.0
+    - RANCHER_ENV=cluster
+    - RANCHER_STACK=flink
 
 install:
   #login to dockerhub
@@ -19,3 +21,6 @@ after_success:
   - echo "build successful"
   #push the image to dockerhub
   - docker push $IMG
+  #deploy to Rancher
+  - docker run -ti --rm cdrx/rancher-gitlab-deploy:latest --rancher-url $RANCHER_URL --rancher-key $RANCHER_ACCESS_KEY --rancher-secret $RANCHER_SECRET_KEY --environment $RANCHER_ENV --stack $RANCHER_STACK --service flink-jobmanager --new-image $IMG --finish-upgrade
+  - docker run -ti --rm cdrx/rancher-gitlab-deploy:latest --rancher-url $RANCHER_URL --rancher-key $RANCHER_ACCESS_KEY --rancher-secret $RANCHER_SECRET_KEY --environment $RANCHER_ENV --stack $RANCHER_STACK --service flink-taskmanager --new-image $IMG --finish-upgrade
