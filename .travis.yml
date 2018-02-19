@@ -7,7 +7,7 @@ env:
   global:
     - IMG=biggis/flink:1.4.0
     - RANCHER_ENV=cluster
-    - RANCHER_STACK=flink
+    - RANCHER_STACK=analytics
 
 install:
   #login to dockerhub
