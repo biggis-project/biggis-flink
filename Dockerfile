@@ -23,7 +23,7 @@ LABEL eu.biggis-project.build-date=$BUILD_DATE \
 RUN set -x && \
     apk --update add --virtual build-dependencies curl && \
     curl -s https://archive.apache.org/dist/flink/flink-${FLINK_VERSION}/flink-${FLINK_VERSION}-bin-hadoop${HADOOP_VERSION}-scala_${SCALA_VERSION}.tgz | tar -xzf - -C /opt && \
-    ln -s /opt/flink-$FLINK_VERSION /opt/flink && \
+    mv /opt/flink-$FLINK_VERSION /opt/flink && \
     sed -i -e "s/echo \$mypid >> \$pid/echo \$mypid >> \$pid \&\& wait/g" /opt/flink/bin/flink-daemon.sh && \
     apk del build-dependencies && \
     rm -rf /var/cache/apk/*

@@ -10,9 +10,9 @@ services:
     command: start.sh jobmanager
     labels:
       io.rancher.container.pull_image: always
-      io.rancher.scheduler.affinity:host_label: flink-jobmanager=true
+      io.rancher.scheduler.affinity:host_label: flink=true
     environment:
-      JOB_MANAGER_RPC_ADDRESS: flink-jobmanager.flink
+      JOB_MANAGER_RPC_ADDRESS: flink-jobmanager.analytics
       HADOOP_MASTER_ADDRESS: hdfs-name.storage
       USER_ID: 1000
       USER_NAME: flink
@@ -32,7 +32,7 @@ services:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.global: 'true'
     environment:
-      JOB_MANAGER_RPC_ADDRESS: flink-jobmanager.flink
+      JOB_MANAGER_RPC_ADDRESS: flink-jobmanager.analytics
       HADOOP_MASTER_ADDRESS: hdfs-name.storage
       USER_ID: 1000
       USER_NAME: flink
