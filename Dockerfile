@@ -36,5 +36,4 @@ COPY ./files /
 WORKDIR /opt/flink
 
 EXPOSE 8081 6123
-
 CMD ["start.sh"]

@@ -2,6 +2,26 @@
 
 JOB_MANAGER_RPC_ADDRESS=${JOB_MANAGER_RPC_ADDRESS:-$(hostname -f)}
 
+# Render a file as template, performing variable substetutions but leaving quotes unchanged
+# Credit: http://stackoverflow.com/questions/2914220/bash-templating-how-to-build-configuration-files-from-templates-with-bash
+function render_template() {
+eval "cat <<EOF
+$(<$1)
+EOF
+"
+}
+
+function template() {
+  local FILE=$1
+  local TEMPLATE=${2:-$FILE.template}
+  echo "[ $(date) ] Template config: $FILE from $TEMPLATE"
+  render_template $TEMPLATE > $FILE
+}
+
+template /opt/flink/hadoop-conf/core-site.xml
+template /opt/flink/hadoop-conf/hdfs-site.xml
+template /opt/flink/conf/flink-conf.yaml
+
 if [ "$1" == "--help" -o "$1" == "-h" ]; then
   echo "Usage: $(basename $0) (jobmanager|taskmanager)"
   exit 0

@@ -13,6 +13,7 @@ services:
       io.rancher.scheduler.affinity:host_label: flink-jobmanager=true
     environment:
       JOB_MANAGER_RPC_ADDRESS: flink-jobmanager.flink
+      HADOOP_MASTER_ADDRESS: hdfs-name.storage
       USER_ID: 1000
       USER_NAME: flink
     logging:
@@ -32,6 +33,7 @@ services:
       io.rancher.scheduler.global: 'true'
     environment:
       JOB_MANAGER_RPC_ADDRESS: flink-jobmanager.flink
+      HADOOP_MASTER_ADDRESS: hdfs-name.storage
       USER_ID: 1000
       USER_NAME: flink
     logging:
