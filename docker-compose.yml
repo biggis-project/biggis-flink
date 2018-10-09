@@ -2,7 +2,7 @@ version: '2.1'
 services:
 
   flink-jobmanager:
-    image: biggis/flink:1.4.0
+    image: biggis/flink:1.5.0
     hostname: flink-jobmanager
     ports:
       - "8081:8081"
@@ -16,7 +16,7 @@ services:
       TIMEZONE: Europe/Berlin
 
   flink-taskmanager:
-    image: biggis/flink:1.4.0
+    image: biggis/flink:1.5.0
     hostname: flink-taskmanager
     depends_on:
       - flink-jobmanager
