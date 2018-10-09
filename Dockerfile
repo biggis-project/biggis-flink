@@ -7,7 +7,7 @@ ARG FLINK_VERSION=1.5.0
 ARG HADOOP_VERSION=27
 ARG SCALA_VERSION=2.11
 
-ARG BUILD_DATE 
+ARG BUILD_DATE
 ARG VCS_REF
 
 LABEL eu.biggis-project.build-date=$BUILD_DATE \
@@ -22,6 +22,7 @@ LABEL eu.biggis-project.build-date=$BUILD_DATE \
 
 RUN set -x && \
     apk --update add --virtual build-dependencies curl && \
+    apk add bc && \
     curl -s https://archive.apache.org/dist/flink/flink-${FLINK_VERSION}/flink-${FLINK_VERSION}-bin-hadoop${HADOOP_VERSION}-scala_${SCALA_VERSION}.tgz | tar -xzf - -C /opt && \
     mv /opt/flink-$FLINK_VERSION /opt/flink && \
     sed -i -e "s/echo \$mypid >> \$pid/echo \$mypid >> \$pid \&\& wait/g" /opt/flink/bin/flink-daemon.sh && \

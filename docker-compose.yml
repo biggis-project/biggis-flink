@@ -11,6 +11,7 @@ services:
     environment:
       JOB_MANAGER_RPC_ADDRESS: flink-jobmanager
       HADOOP_MASTER_ADDRESS: hdfs-name.storage
+      REMAINING_SYS_MEM_IN_PERCENT: 20
       USER_ID: ${USER_ID-1000}
       USER_NAME: flink
       TIMEZONE: Europe/Berlin
@@ -26,6 +27,7 @@ services:
     environment:
       JOB_MANAGER_RPC_ADDRESS: flink-jobmanager
       HADOOP_MASTER_ADDRESS: hdfs-name.storage
+      REMAINING_SYS_MEM_IN_PERCENT: 20
       USER_ID: ${USER_ID-1000}
       USER_NAME: flink
       TIMEZONE: Europe/Berlin
